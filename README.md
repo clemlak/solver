@@ -1,65 +1,78 @@
-# solver README
+# 🔎 Solver
 
-This is the README for your extension "solver". After writing up a brief description, we recommend including the following sections.
+> Solver integrates [Solhint](https://github.com/protofire/solhint) (a [Solidity](https://solidity.readthedocs.io) linter) in [Visual Studio Code](https://code.visualstudio.com). 
 
-## Features
+## 🚀 Usage
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Once installed, the extension will be activated every time you will open a Solidity file.
 
-For example if there is an image subfolder under your extension project workspace:
+The way it works is very simple:
+- **If you opened a single file:** the rules defined in the settings of the extension will be used.
+- **If you opened a folder:** the extension is going to look for a `.solhint.json` file in the current workspace and use the rules defined inside this file.
 
-\!\[feature X\]\(images/feature-x.png\)
+*Note: If you did not defined any rule in the settings of the extension, or if the `solhint.json` file is missing, all the Solhint rules are going to be activated.*
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## 🔧 Extension Settings
 
-## Requirements
+The following settings are available:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### `solver.delay`
 
-## Extension Settings
+When the current file has been edited, this defines how much time (in millisecond) the extension will wait before triggering a new linting. Exemple:
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+```json=
+  "solver.delay": 500
+```
 
-For example:
+### `solver.warningStyle`
 
-This extension contributes the following settings:
+The style applied to the warning messages. Example:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+```json=
+"solver.warningStyle": {
+  "border": "1px solid #f39c12",
+  "borderStyle": "dashed"
+}
+```
 
-## Known Issues
+### `solver.errorStyle`
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+The style applied to the error messages. Example:
 
-## Release Notes
+```json=
+"solver.warningStyle": {
+  "border": "1px solid #c0392b",
+  "borderStyle": "dashed"
+}
+```
 
-Users appreciate release notes as you update your extension.
+### `solver.config`
 
-### 1.0.0
+This defines all the rules related to Solhint. You can simply copy / paste the content of a `.solhint.json` file in here. Example:
 
-Initial release of ...
+```json=
+"solver.config": {
+  "extends": "solhint:default",
+  "plugins": [],
+  "rules": {
+    "quotes": "warn",
+    "const-name-snakecase": "off",
+    "avoid-suicide": "error",
+    "avoid-sha3": "warn",
+    "avoid-tx-origin:": "warn",
+    "not-rely-on-time": "warn",
+    "not-rely-on-block-hash": "warn",
+    "space-after-comma": "warn",
+    "no-spaces-before-semicolon": "warn"
+  }
+}
+```
 
-### 1.0.1
+## 🐛 Known Issues
 
-Fixed issue #.
+Here are the known issues, I'll try to fix them as soon as possible:
 
-### 1.1.0
+- When the rules are changed (in the settings or in the `solhint.json` file), the new configuration may not be directly used in the current file
+- Plugins are not supported yet
+- This extension does not implement Solidity syntax highlighting
 
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
