@@ -2,7 +2,8 @@
 	"name": "solver",
 	"displayName": "Solver",
 	"description": "🔎 Solver integrates Solhint (a Solidity linter) in Visual Studio Code.",
-	"version": "0.0.1",
+  "version": "0.0.1",
+  "publisher": "clemlak",
 	"engines": {
 		"vscode": "^1.38.0"
 	},
