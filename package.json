@@ -1,14 +1,28 @@
 {
 	"name": "solver",
 	"displayName": "Solver",
-	"description": "Solhint (Solidity linter) support for Visual Studio Code",
+	"description": "🔎 Solver integrates Solhint (a Solidity linter) in Visual Studio Code.",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.38.0"
 	},
 	"categories": [
-		"Other"
-	],
+		"Linters"
+  ],
+  "icon": "icon.png",
+  "galleryBanner": {
+		"color": "#000",
+		"theme": "dark"
+  },
+  "author": {
+    "name": "clemlak"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/clemlak/solver",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/clemlak/solver.git"
+	},
 	"activationEvents": [
     "onLanguage:solidity"
 	],
