@@ -1,5 +1,7 @@
 # 🔎 Solver
 
+![](https://i.imgur.com/Nk8gnTw.png)
+
 > Solver integrates [Solhint](https://github.com/protofire/solhint) (a [Solidity](https://solidity.readthedocs.io) linter) in [Visual Studio Code](https://code.visualstudio.com). 
 
 Learn more about Solhint [here](https://github.com/protofire/solhint).
@@ -80,6 +82,7 @@ You can find more details about Solhint rules [here](https://github.com/protofir
 
 Here are the known issues, I'll try to fix them as soon as possible:
 
+- When an issue has been spotted, the warning / error message may highlight more code than needed
 - When the rules are updated (in the settings or in the `.solhint.json` file), the new configuration may not be used right away in the current file
 - Plugins are not supported yet
 - When an issue has been spotted, a solution could be proposed to fix it
