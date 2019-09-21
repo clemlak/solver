@@ -4,7 +4,9 @@ import {
 } from 'solhint/lib';
 
 export function activate(context: vscode.ExtensionContext) {
-  const editor = vscode.window.activeTextEditor;
+  console.log('Extension activated');
+
+  let editor = vscode.window.activeTextEditor;
   let timeout: NodeJS.Timer;
 
   /* We load our settings */
@@ -24,7 +26,6 @@ export function activate(context: vscode.ExtensionContext) {
 
           fs.readFile(files[0])
             .then((content) => {
-              console.log('Config file found!');
               solhintConfig = JSON.parse(content.toString());
               vscode.window.showInformationMessage('Using solhint.json configuration file from current workspace.');
             });
@@ -39,7 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
   }
 
   function updateDecorations() {
-    if (!editor) {
+    if (!editor || editor.document.languageId !== 'solidity') {
       return;
     }
 
@@ -88,15 +89,17 @@ export function activate(context: vscode.ExtensionContext) {
     timeout = setTimeout(updateDecorations, delay);
   }
 
-  vscode.window.onDidChangeActiveTextEditor((activeEditor) => {
-    if (activeEditor) {
-      triggerUpdateDecorations();
-    }
+  vscode.window.onDidChangeActiveTextEditor(() => {
+    editor = vscode.window.activeTextEditor;
+    triggerUpdateDecorations();
   }, null, context.subscriptions);
 
   vscode.window.onDidChangeTextEditorSelection(() => {
+    editor = vscode.window.activeTextEditor;
     triggerUpdateDecorations();
   }, null, context.subscriptions);
 }
 
-export function deactivate() {}
+export function deactivate() {
+  console.log('Extension desactivated');
+}
