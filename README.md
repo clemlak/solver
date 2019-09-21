@@ -2,6 +2,8 @@
 
 > Solver integrates [Solhint](https://github.com/protofire/solhint) (a [Solidity](https://solidity.readthedocs.io) linter) in [Visual Studio Code](https://code.visualstudio.com). 
 
+Learn more about Solhint [here](https://github.com/protofire/solhint).
+
 ## 🚀 Usage
 
 *Since Solver already contains an instance of Solhint, you are not required to install it. If you are creating a new project from scratch, you can add manually a `.solhint.json` configuration file (or use Solhint to generate one).*
@@ -80,5 +82,6 @@ Here are the known issues, I'll try to fix them as soon as possible:
 
 - When the rules are updated (in the settings or in the `.solhint.json` file), the new configuration may not be used right away in the current file
 - Plugins are not supported yet
+- When an issue has been spotted, a solution could be proposed to fix it
 - This extension does not implement Solidity syntax highlighting
 
