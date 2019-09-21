@@ -10,6 +10,13 @@
 	"categories": [
 		"Linters"
   ],
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "blockchain",
+    "linter",
+    "solhint"
+  ],
   "icon": "icon.png",
   "galleryBanner": {
 		"color": "#000",
