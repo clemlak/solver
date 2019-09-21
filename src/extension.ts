@@ -4,24 +4,17 @@ import {
 } from 'solhint/lib';
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Solver activated...');
-
+  const editor = vscode.window.activeTextEditor;
   let timeout: NodeJS.Timer;
 
+  /* We load our settings */
   const delay: number = vscode.workspace.getConfiguration().get('solver.delay') as number;
+  const warningStyle: object = vscode.workspace.getConfiguration().get('solver.warningStyle') as object;
+  const errorStyle: object = vscode.workspace.getConfiguration().get('solver.errorStyle') as object;
   let solhintConfig: object;
 
-  const editor = vscode.window.activeTextEditor;
-
-  const warningDecoration = vscode.window.createTextEditorDecorationType({
-    border: '1px solid #f39c12',
-    borderStyle: 'dashed'
-  });
-
-  const errorDecoration = vscode.window.createTextEditorDecorationType({
-    border: '1px solid #c0392b',
-    borderStyle: 'dashed'
-  });
+  const warningDecoration = vscode.window.createTextEditorDecorationType(warningStyle);
+  const errorDecoration = vscode.window.createTextEditorDecorationType(errorStyle);
 
   if (vscode.workspace.name) {
     vscode.workspace.findFiles('**/.solhint.json', '**/node_modules/**')
@@ -33,11 +26,11 @@ export function activate(context: vscode.ExtensionContext) {
             .then((content) => {
               console.log('Config file found!');
               solhintConfig = JSON.parse(content.toString());
-              vscode.window.showInformationMessage('Loaded configuration from local solhint.json file.');
+              vscode.window.showInformationMessage('Using solhint.json configuration file from current workspace.');
             });
         } else {
           solhintConfig = vscode.workspace.getConfiguration().get('solver.config') as object;
-          vscode.window.showErrorMessage('No solhint.json config file has been found in the current workspace, the rules set in the settings will be used.');
+          vscode.window.showErrorMessage('No solhint.json configuration file has been found in the current workspace, the rules set in the settings will be used.');
         }
       });
   } else {
