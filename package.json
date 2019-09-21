@@ -18,9 +18,25 @@
       "title": "Solver",
       "properties": {
         "solver.delay": {
-          "type": "integer",
+          "type": "number",
           "default": 500,
           "description": "After editing the current file, the extension will wait before triggering another linting."
+        },
+        "solver.warningStyle": {
+          "type": "object",
+          "default": {
+            "border": "1px solid #f39c12",
+            "borderStyle": "dashed"
+          },
+          "description": "The style applied to the warnings."
+        },
+        "solver.errorStyle": {
+          "type": "object",
+          "default": {
+            "border": "1px solid #c0392b",
+            "borderStyle": "dashed"
+          },
+          "description": "The style applied to the errors."
         },
         "solver.config": {
           "type": "object",
