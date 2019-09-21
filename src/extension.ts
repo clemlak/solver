@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import {
-  processStr,
+  processStr, Reporter,
 } from 'solhint/lib';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -47,8 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
     const warnings = [];
     const errors = [];
 
-    const report = processStr(editor.document.getText(), solhintConfig);
-    console.log(report.messages);
+    const report: Reporter = processStr(editor.document.getText(), solhintConfig);
 
     for (let i = 0; i < report.messages.length; i += 1) {
       const msg = report.messages[i];
