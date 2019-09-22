@@ -3,7 +3,7 @@
 	"displayName": "Solver",
 	"description": "🔎 Solver integrates Solhint (a Solidity linter) in Visual Studio Code.",
   "version": "0.0.1",
-  "publisher": "clemlak",
+  "publisher": "clementlakhal",
 	"engines": {
 		"vscode": "^1.38.0"
 	},
@@ -23,7 +23,7 @@
 		"theme": "dark"
   },
   "author": {
-    "name": "clemlak"
+    "name": "Clement Lakhal"
   },
   "license": "MIT",
   "homepage": "https://github.com/clemlak/solver",
